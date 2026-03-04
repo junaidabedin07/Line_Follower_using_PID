@@ -1,80 +1,64 @@
-\# PID-Based Fast Line Follower Robot
+# Line Following Robot
 
-
-
-\## Overview
-
-This project implements a high-speed autonomous line follower robot designed for competitive environments. The robot follows a black line on a white surface using reflective optical sensors and PID control to achieve stable, smooth, and fast motion.
-
-
-
-The system is fully autonomous, microcontroller-based, and compliant with standard robotics competition constraints (size, power, autonomy, and sensor usage).
-
-
+A PID-controlled line following robot built for competitive racing.
+Competed in two events — won 1st place at GIFT Festronix.
 
 ---
 
-
-
-\## Objectives
-
-\- Accurate line detection at high speed
-
-\- Smooth motion without oscillation
-
-\- Reliable recovery from temporary line loss
-
-\- Modular, well-documented embedded design
-
-
+## Hardware
+| Component | Details |
+|---|---|
+| Microcontroller | Arduino Nano |
+| Sensor | QTR-8A (8-channel analog) |
+| Motor Driver | TB6612FNG × 2 |
+| Motors | N20 × 2 |
+| Power | 2S LiPo → Nano Vin (7–12V) |
+| PCB | Hand-soldered Zero PCB |
+→ [Schematic](hardware/schematics/schematics.jpg)
 
 ---
 
+## How It Works
+The QTR-8A reads the line position across 8 analog sensors.
+Error is calculated relative to center, fed into a PD controller,
+and output as differential PWM to the two motors via TB6612FNG drivers.
 
-
-\## System Highlights
-
-\- Arduino Nano (ATmega328P)
-
-\- QTR-8RC / Reflective IR sensor array
-
-\- PID-based motor control
-
-\- TB6612FNG motor driver
-
-\- Differential drive architecture
-
-
+Speed is dynamic — maximum on straight sections, reduced on turns
+for tighter cornering without losing stability.
 
 ---
 
-
-
-\## How It Works (High-Level)
-
-1\. Sensors read reflectance values from the surface.
-
-2\. Line position error is calculated.
-
-3\. PID controller computes correction.
-
-4\. Motor speeds are adjusted dynamically.
-
-5\. Recovery logic handles line-loss scenarios.
-
-
+## PID Configuration
+| Parameter | Value |
+|---|---|
+| Kp | 0.3 |
+| Kd | 3.0 |
+| Straight Speed | 255 |
+| Turn Speed | 120 |
+| Max PWM | 255 |
 
 ---
 
-
-
-\## Repository Structure
-
-See the project tree for firmware, hardware, and documentation details.
-
-
+## Project Structure
+```
+firmware/     → Arduino source code and PID config
+hardware/     → Pin mapping and bill of materials
+docs/         → Architecture, design decisions, risk log
+logs/         → Debug notes and troubleshooting history
+```
 
 ---
 
+## Competition Results
+| Event | Result |
+|---|---|
+| IIT Pravaah | Did not compete (circuitry damage) |
+| GIFT Festronix | 🏆 1st Place |
 
+---
 
+## Build Journey
+A full 15-day development log covering every hardware failure,
+platform switch, and tuning session that led to the final build.
+
+→ [DEVLOG.md](DEVLOG.md)

@@ -1,9 +1,10 @@
-Component,Quantity
-Arduino Nano,1
-Reflective IR Sensor Array,1
-TB6612FNG Motor Driver,1
-N20 DC Gear Motor,2
-7.4V Li-ion Battery,1
-Buck Converter (LM2596),1
-Chassis,1
-Wheels,2
+Component,Model,Quantity,Purpose
+Microcontroller,Arduino Nano,1,Main controller
+Sensor,QTR-8A,1,Line detection
+Motor Driver,TB6612FNG,1,Motor control
+Motor,N20,2,Drive wheels
+Battery,2S LiPo,1,Power supply
+PCB,Zero PCB,1,Circuit mounting
+Female Headers,Generic,1 strip,Component mounting
+Capacitors,Generic,4,Brownout protection
+Chassis,Aluminum coated panel,1,Bot frame
