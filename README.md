@@ -10,7 +10,7 @@ Competed in two events — won 1st place at GIFT Festronix.
 |---|---|
 | Microcontroller | Arduino Nano |
 | Sensor | QTR-8A (8-channel analog) |
-| Motor Driver | TB6612FNG × 2 |
+| Motor Driver | TB6612FNG |
 | Motors | N20 × 2 |
 | Power | 2S LiPo → Nano Vin (7–12V) |
 | PCB | Hand-soldered Zero PCB |
